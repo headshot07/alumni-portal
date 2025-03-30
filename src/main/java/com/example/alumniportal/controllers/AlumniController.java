@@ -17,14 +17,14 @@ public class AlumniController {
     private IAlumniService alumniService;
 
     @PostMapping(path = "/search", produces = {MediaType.APPLICATION_JSON_VALUE})
-    public @ResponseBody ResponseEntity<AlumniDetailsResponseDTO> createOrders(@Valid @RequestBody AlumniDetailsRequestDTO alumniDetailsRequestDTO) {
-        AlumniDetailsResponseDTO alumniDetailsResponseDTO = null;
+    public @ResponseBody ResponseEntity<AlumniDetailsResponseDTO> fetchAlumniDetails(@Valid @RequestBody AlumniDetailsRequestDTO alumniDetailsRequestDTO) {
+        AlumniDetailsResponseDTO alumniDetailsResponseDTO = alumniService.searchForAlumni(alumniDetailsRequestDTO);
         return ResponseEntity.ok(alumniDetailsResponseDTO);
     }
 
     @GetMapping(path = "/all", produces = {MediaType.APPLICATION_JSON_VALUE})
-    public @ResponseBody ResponseEntity<AlumniDetailsResponseDTO> createDispatchPlan() {
-        AlumniDetailsResponseDTO alumniDetailsResponseDTO = null;
+    public @ResponseBody ResponseEntity<AlumniDetailsResponseDTO> fetchSavedAlumniDetails() {
+        AlumniDetailsResponseDTO alumniDetailsResponseDTO = alumniService.fetchAllAlumniDetails();
         return ResponseEntity.ok(alumniDetailsResponseDTO);
     }
 }

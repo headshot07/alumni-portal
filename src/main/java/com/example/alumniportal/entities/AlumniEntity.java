@@ -20,7 +20,7 @@ public class AlumniEntity extends BaseEntity  {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = true)
+    @Column(name = "\"current_role\"", nullable = true)
     private String currentRole;
 
     @Column(nullable = false)
